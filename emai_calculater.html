@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellpadding="10" align="center" width="50%">
+        <tr>
+            <td>enter your amount</td>
+            <td>
+                <input type="number"  id="amount">
+            </td>
+        </tr>
+        <tr>
+            <td>enter your interest rate</td>
+            <td>
+                <input type="number"  id= "rate"> 
+            </td>
+        </tr>
+        <tr>
+            <td>enter months</td>
+            <td>
+                <input type="number" id= "months">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="generate emi" onclick="calculate();">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" id="result">
+
+            </td>
+        </tr>
+    </table>
+   
+    <script>
+        let calculate = function(){
+        let amount, rate, months;
+        amount=parseInt(document.getElementById("amount").value);
+        rate=parseInt(document.getElementById("rate").value);
+        months=parseInt(document.getElementById("months").value);
+        console.log(amount +" " + rate + " " + months);
+
+           if(isNaN(amount)==true){
+                alert("amount is invalid/empty");
+            }
+            else if(isNaN(rate)==true){
+                alert("rate is invalid/empty");
+            }
+            else if(isNaN(months)==true){
+                alert("months is invalid/empty");
+            }
+            else{
+                let interest;
+                let total;
+             //for(let count=1;count<=moths;count=count+1)
+             {
+                    interest = (amount * (rate * 1)) /100;
+                    total = ((amount / months) + interest).toFixed(2);
+             }
+            const emitotal=(total*months);
+            const total_interest= (emitotal-amount).toFixed(2);
+
+                document.getElementById("result").innerHTML = "EMI par months: " + total + 
+                '<br>' + "EMI total: " + emitotal + '<br>' + "inters: " +total_interest;
+            }
+        }
+    </script>
+</body>
+</html>
